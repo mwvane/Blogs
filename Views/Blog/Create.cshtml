@@ -1,0 +1,45 @@
+﻿@model Blogs.Models.Blog
+<div class="container">
+	@*<form method="post" action='@Url.Action("CreateBlog", "Blog")' enctype="multipart/form-data"></form>*@
+
+	@using (Html.BeginForm("CreateBlog", "Blog", FormMethod.Post, new { enctype = "multipart/form-data" }))
+	{
+		@Html.AntiForgeryToken()
+
+		@Html.HiddenFor(m => m.Id);
+
+		<div class="mt-2">
+			@Html.LabelFor(m => m.Title)
+			@Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+			@Html.ValidationMessageFor(m => m.Title,null, new { @class="text-danger" })
+		</div>
+		<div class="mt-2">
+			@Html.LabelFor(m => m.ShortDescription)
+			@Html.TextBoxFor(m => m.ShortDescription, new { @class = "form-control" })
+			@Html.ValidationMessageFor(m => m.ShortDescription,null, new { @class="text-danger" })
+
+		</div>
+
+		<div class="mt-2">
+			@Html.LabelFor(m => m.Description)
+			@Html.TextAreaFor(m => m.Description, new { @class = "form-control", @rows = "5" })
+			@Html.ValidationMessageFor(m => m.Description,null, new { @class="text-danger" })
+
+		</div>
+
+		<div class="mt-2">
+			@Html.LabelFor(m => m.ImageUrl)
+			@Html.TextBoxFor(m => m.ImageUrl, new { @class = "form-control", @type = "file" })
+			@Html.ValidationMessageFor(m => m.ImageUrl,null, new { @class = "text-danger" })
+
+			@*<input type="file" />*@
+		</div>
+
+		<div class="mt-4">
+			<button class="btn btn-primary">
+				Submit
+			</button>
+		</div>
+	}
+
+</div>

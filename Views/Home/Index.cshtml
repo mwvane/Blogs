@@ -1,0 +1,22 @@
+﻿@model IEnumerable<Blogs.Models.Blog>
+<div class="mt-5">
+	<div class="mt-5 mx-5">
+		<div class="row">
+			@foreach (var blog in Model)
+			{
+				<div class="col-sm-12 col-md-12 col-lg-6 col-xl-3 mt-4">
+					<form method="get" action='@Url.Action("Show", "Blog", new { id = blog.Id })'>
+						<div class="card rounded border-0 shadow" onclick="this.parentNode.submit()">
+							<div class="card-header">
+								<img src='@Url.Content("~/Assets/UploadedFiles/" + blog.ImageUrl)' width="100%" height="300px" alt="" />
+							</div>
+							<div class="card-body" style="height: 100px">
+								<h4 class="text-primary">@blog.Title</h4>
+							</div>
+						</div>
+					</form>
+				</div>
+			}
+		</div>
+	</div>
+</div>

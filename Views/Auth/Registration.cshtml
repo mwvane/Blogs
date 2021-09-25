@@ -1,0 +1,50 @@
+﻿@model Blogs.Models.User
+
+<div class="container">
+	<div class="mt-5 shadow">
+		<div class="card border-0">
+			<div class="card-header p-4">
+				<h3 class="text-primary"> Registration </h3>
+			</div>
+			<div class="card-body">
+				<form method="post" action='@Url.Action("RegisterUser", "Auth")'>
+					@Html.AntiForgeryToken()
+					<div class="row">
+						<div class="col-5">
+							<div>
+								@Html.LabelFor(t => t.Username)
+								@Html.TextBoxFor(t => t.Username, new { @class = "form-control" })
+								@Html.ValidationMessageFor(t => t.Username, null, new { @class = "text-danger" })
+								@*<label for="username"> Username </label>*@
+								@*<input name="username" class="form-control" />*@
+							</div>
+						</div>
+						<div class="col-5">
+							<div>
+								@Html.LabelFor(t => t.Password)
+								@Html.TextBoxFor(t => t.Password, new { @class = "form-control" })
+								@Html.ValidationMessageFor(t => t.Password, null, new { @class = "text-danger" })
+
+								@*<label for="password"> Password </label>
+									<input name="password" class="form-control" />*@
+							</div>
+						</div>
+						<div class="col-5 mt-3">
+							<div>
+								@Html.Label("Confirm Password")
+								@Html.TextBox("confirmPassword", "", new { @class = "form-control" })
+
+								@*<label for="password"> Password </label>
+									<input name="password" class="form-control" />*@
+							</div>
+						</div>
+					</div>
+					<div class="mt-4">
+						<button class="btn btn-primary"> Submit </button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
